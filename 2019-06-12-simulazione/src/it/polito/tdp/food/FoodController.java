@@ -44,6 +44,8 @@ public class FoodController {
 
     @FXML
     void doCalcolaDieta(ActionEvent event) {
+    	model.dietaEquilibrata(boxIngrediente.getValue());
+    	txtResult.appendText("Dieta Equilibrata calcolata, ingredienti: \n "+model.getDietaBest().toString()+"\nTotale Calorie: "+model.getMaxCalorie());
     	
 
     }
@@ -55,7 +57,8 @@ public class FoodController {
         double calorie = Double.parseDouble(txtCalorie.getText());
     	model.creaGrafo(calorie);
     	boxIngrediente.getItems().addAll(model.getIngredienti(calorie));
-    	txtResult.appendText(model.getGrafo().toString());
+    	txtResult.appendText(model.verticiGrafo());
+    	txtResult.appendText(model.archiGrafo());
     	txtResult.appendText(model.ordinaIngredienti());
 
     }
